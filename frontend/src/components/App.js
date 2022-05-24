@@ -34,6 +34,7 @@ function App() {
   const [headerLink, setHeaderLink] = React.useState('');
   const [addressBar, setAddressBar] = React.useState('');
 
+
   const history = useHistory();
 
   function handleCardClick(card) {
@@ -65,10 +66,11 @@ function App() {
   }
 
   function handleCardLike({ _id, likes }) {
-    const isLiked = likes.some((i) => i._id === currentUser._id);
+    const jwt = localStorage.getItem('jwt')
+    const isLiked = likes.some((id) => id === currentUser._id);
 
     api
-      .changeLikeCardStatus(_id, !isLiked)
+      .changeLikeCardStatus(_id, !isLiked, jwt)
       .then((newCard) => {
         setCards((state) =>
           state.map((card) => (card._id === _id ? newCard : card))
@@ -78,8 +80,9 @@ function App() {
   }
 
   function handleCardDelete({ id }) {
+    const jwt = localStorage.getItem('jwt')
     api
-      .deleteCard(id)
+      .deleteCard(id, jwt)
       .then(() => {
         setCards(cards.filter((card) => card._id != id));
       })
@@ -87,8 +90,9 @@ function App() {
   }
 
   function handleUpdateUser(userData) {
+    const jwt = localStorage.getItem('jwt')
     api
-      .setUserInfo(userData)
+      .setUserInfo(userData, jwt)
       .then((res) => {
         setCurrentUser(res);
         handleClosePopups();
@@ -99,8 +103,9 @@ function App() {
   }
 
   function handleUpdateAvatar(userData) {
+    const jwt = localStorage.getItem('jwt')
     api
-      .setUserAvatar(userData)
+      .setUserAvatar(userData, jwt)
       .then((res) => {
         setCurrentUser(res);
         handleClosePopups();
@@ -109,8 +114,9 @@ function App() {
   }
 
   function handleAddPlace(data) {
+    const jwt = localStorage.getItem('jwt')
     api
-      .addCard(data)
+      .addCard(data, jwt)
       .then((newCard) => {
         setCards([newCard, ...cards]);
         handleClosePopups();
@@ -143,7 +149,7 @@ function App() {
         const jwt = localStorage.getItem('jwt')
         auth.checkingToken(jwt)
             .then((res) => {
-                setHeaderLink(res.data.email)
+                setHeaderLink(res.email)
                 setLoggedIn(true)
                 history.push('/')
             })
@@ -158,13 +164,16 @@ React.useEffect (() => {
 }, []);
 
   React.useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getInitialCards()])
+    const jwt = localStorage.getItem('jwt');
+    if(jwt){
+      Promise.all([api.getUserInfo(jwt), api.getInitialCards(jwt)])
       .then(([userData, cards]) => {
         setCurrentUser(userData);
         setCards(cards);
       })
       .catch((e) => console.log(`Ошибка при получении данных: ${e}`));
-  }, []);
+    }
+  }, [loggedIn]);
 
   return (
     <BrowserRouter>

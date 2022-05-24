@@ -9,11 +9,11 @@ function Card(props) {
    const onCardClick = props.onCardClick;
    const onEditImagePopup = props.onEditImagePopup;
    const context = React.useContext(CurrentUserContext);
-   const isOwn = props.owner._id === context._id;
+   const isOwn = props.owner === context._id;
    const cardDeleteButtonClassName = (
       ` ${isOwn ? 'button button_type_delete opacity' : ''}`
    )
-   const isLiked = likes.some(i => i._id === context._id);
+   const isLiked = likes.some(i => i === context._id);
    const cardLikeButtonClassName = (`like-container__like opacity opacity_like ${isLiked ? 'like-container__like_active' : ''}`)
    
    function onClick() {

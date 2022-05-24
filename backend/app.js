@@ -31,6 +31,8 @@ const options = {
     "https://kate.mesto.nomoredomains.work",
     "http://localhost:3000",
     "https://localhost:3000",
+    "http://localhost:3001",
+    "https://localhost:3001",
   ],
   methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
   preflightContinue: false,

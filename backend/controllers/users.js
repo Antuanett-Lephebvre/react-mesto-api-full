@@ -10,7 +10,7 @@ const { NODE_ENV, JWT_SECRET } = process.env;
 
 const getUsers = (req, res, next) => {
   User.find({})
-    .then((users) => res.status(200).send({ data: users }))
+    .then((users) => res.status(200).send(users))
     .catch((err) => next(err));
 };
 
@@ -20,7 +20,7 @@ const getUser = (req, res, next) => {
       if (!user) {
         throw new NotFound('Нет пользователя с таким id');
       }
-      return res.status(200).send({ data: user });
+      return res.status(200).send(user);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -77,7 +77,7 @@ const updateProfile = (req, res, next) => {
     { name, about },
     { new: true, runValidators: true },
   )
-    .then((user) => res.status(200).send({ data: user }))
+    .then((user) => res.status(200).send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequest(
@@ -96,7 +96,7 @@ const updateAvatar = (req, res, next) => {
     { avatar },
     { new: true, runValidations: true },
   )
-    .then((user) => res.status(200).send({ data: user }))
+    .then((user) => res.status(200).send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequest(
@@ -128,15 +128,10 @@ const login = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
-        NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key'
+        NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key',
       );
       res
-        .cookie('jwt', token, {
-          maxAge: 3600000 * 24 * 7,
-          httpOnly: true,
-          sameSite: true,
-        })
-        .send({ message: 'Успешный вход' });
+        .status(200).send({ token });
     })
     .catch((err) => {
       if (err.code === 11000) {
@@ -154,7 +149,7 @@ const getCurrentUser = (req, res, next) => {
       if (!user) {
         throw new NotFound('Нет пользователя с таким id');
       }
-      res.send({ data: user });
+      res.send(user);
     })
     .catch((err) => {
       if (err.name === 'CastError') {

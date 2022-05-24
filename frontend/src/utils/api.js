@@ -12,30 +12,30 @@ class Api {
         
     }
 
-    getUserInfo() {
+    getUserInfo(token) {
         return fetch(this.url+'/users/me', {
-            headers: this.headers,
+            headers: { ...this.headers, authorization: token}
         })
         .then(this._checkResponse)
     }
 
-    getInitialCards() {
+    getInitialCards(token) {
         return fetch(this.url+'/cards', {
-            headers: this.headers,
+            headers: { ...this.headers, authorization: token}
         })
         .then(this._checkResponse)
     }
 
-    changeLikeCardStatus(_id, isLiked) {
-        return fetch(`${this.url}/cards/likes/${_id}`, isLiked ?
+    changeLikeCardStatus(_id, isLiked, token) {
+        return fetch(`${this.url}/cards/${_id}/likes/`, isLiked ?
         {
             method: 'PUT',
-            headers: this.headers,
+            headers: { ...this.headers, authorization: token}
         }
          : 
          {
             method: 'DELETE',
-            headers: this.headers,
+            headers: { ...this.headers, authorization: token},
             body: JSON.stringify({
                 _id: _id,
             })
@@ -43,22 +43,22 @@ class Api {
         ).then(this._checkResponse)
     }
 
-    deleteCard(id) {
+    deleteCard(id, token) {
         this._id = id;
          return fetch(this.url+'/cards/'+ this._id, {
              method: 'DELETE',
-             headers: this.headers,
+             headers: { ...this.headers, authorization: token},
              body: JSON.stringify({
                  _id: this._id,
              })
          }).then(this._checkResponse)
      }
      
-     setUserInfo(data) {
+     setUserInfo(data, token) {
          console.log(data)
         return fetch(this.url+'/users/me', {
             method: 'PATCH',
-            headers: this.headers,
+            headers: { ...this.headers, authorization: token},
             body: JSON.stringify({
                 name: data.name,
                 about: data.about
@@ -66,10 +66,10 @@ class Api {
         }).then(this._checkResponse);
         }
 
-        setUserAvatar(data) {
+        setUserAvatar(data, token) {
             return fetch(this.url+'/users/me/avatar', {
                 method: 'PATCH',
-                headers: this.headers,
+                headers: { ...this.headers, authorization: token},
                 body: JSON.stringify({
                     avatar: data.avatar,
                 })
@@ -77,11 +77,11 @@ class Api {
             .then(this._checkResponse);
         }
 
-        addCard(card) {
+        addCard(card, token) {
             console.log(card);
             return fetch(this.url+'/cards', {
                 method: 'POST',
-                headers: this.headers,
+                headers: { ...this.headers, authorization: token},
                 body: JSON.stringify({
                     name: card.photoName,
                     link: card.link,
@@ -93,8 +93,8 @@ class Api {
 }
 
 const api = new Api({
+    //url: 'http://localhost:3000',
     url: 'https://api.ekatant.nomoredomains.work',
-
     headers: {
         'Content-Type': 'application/json'
     } 

@@ -1,6 +1,8 @@
 
 
 export const baseUrl = 'https://api.ekatant.nomoredomains.work';
+//export const baseUrl = 'http://localhost:3000';
+
 
 function _checkResponsive (res) {
   if (res.ok) {
