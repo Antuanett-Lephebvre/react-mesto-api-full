@@ -39,7 +39,7 @@ const deleteCard = (req, res, next) => {
       if (userId !== String(card.owner)) {
         throw new Forbidden('Недостаточно прав');
       }
-      Card.findOneAndRemove(cardId)
+      Card.findByIdAndRemove(cardId)
         .then(() => res.status(200).send({ message: 'Карточка удалена' }))
         .catch(next);
     })
