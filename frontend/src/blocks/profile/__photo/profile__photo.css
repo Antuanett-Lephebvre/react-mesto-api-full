@@ -1,0 +1,34 @@
+
+    .profile__photo {
+        padding: 0;
+        border: none;
+        margin-right: 30px;
+        border-radius: 50%;
+        height: 120px;
+        width: 120px;
+        object-fit: cover;
+        position: relative;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: transparent;
+    }
+
+    .profile__photo::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: black;
+        background-image: url("../../../images/pen.svg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 26px, 26px;
+        opacity: 0;
+    }
+
+    .profile__photo:hover::after {
+        opacity: 0.8;
+    }

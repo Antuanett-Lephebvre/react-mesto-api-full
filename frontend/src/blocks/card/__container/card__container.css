@@ -1,0 +1,8 @@
+.card__container {
+    color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 21px;
+    border-radius: 0px 0px 10px 10px;
+}

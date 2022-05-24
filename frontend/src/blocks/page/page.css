@@ -1,0 +1,19 @@
+.page{
+    background-color: #000000;
+    max-width: 880px;
+    min-width: 320px;
+    margin: 45px auto 41px;
+    color: #FFFFFF;
+    position: absolute;
+    width: 50%;
+    left: 0;
+    right: 0;
+    
+}
+
+@media (max-width: 900px) {
+    .page{
+        margin-top: 28px;
+        margin-bottom: 36px;
+    }
+}

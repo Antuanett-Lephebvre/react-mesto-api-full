@@ -1,0 +1,14 @@
+.like-container__number{
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15,73px;
+    margin: auto;
+    margin-top: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 13px;
+    max-width: 13px;
+}

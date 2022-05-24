@@ -1,0 +1,15 @@
+.button_type_invalid {
+    background-color: #FFFFFF;
+    color: black;
+    border: 1px solid #000000;
+    opacity: 0.3;
+    cursor: default;
+}
+
+.button_type_invalid:hover {
+    background-color: #FFFFFF;
+    color: black;
+    border: 1px solid #000000;
+    opacity: 0.3;
+    cursor: default;
+}

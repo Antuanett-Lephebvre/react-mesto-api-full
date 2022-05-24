@@ -1,0 +1,15 @@
+.header {
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(84, 84, 84, .7);
+    padding-bottom: 41px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+@media (max-width: 900px) {
+    .header {
+        margin: 0;
+        padding-bottom: 31.6px;
+    }
+}

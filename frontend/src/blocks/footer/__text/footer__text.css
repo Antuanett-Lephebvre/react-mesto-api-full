@@ -1,0 +1,17 @@
+.footer__text {
+    margin: 0;
+    font-family: Inter Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: #545454;
+}
+
+@media (max-width: 900px) {
+    .footer__text{
+        margin: 0 19px;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

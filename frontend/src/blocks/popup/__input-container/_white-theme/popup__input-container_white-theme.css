@@ -1,0 +1,6 @@
+.popup__input-container_white-theme {
+    background-color: white;
+    max-width: 430px;
+    max-height: 330px;
+    border-radius: 10px;
+}

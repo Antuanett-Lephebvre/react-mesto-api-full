@@ -1,0 +1,19 @@
+.button_type_add {
+    width: 150px;
+    height: 50px;
+    border: 2px solid white;
+    box-sizing: border-box;
+    border-radius: 2px;
+    background-image: url('../../../images/plus.svg');
+    background-repeat: no-repeat;
+    background-clip: padding-box;
+    background-position: center center;
+}
+
+@media (max-width: 900px) {
+    .button_type_add{
+        margin-top: 36px;
+        width: 88.15vw;
+        max-width: 900px;
+    }
+}

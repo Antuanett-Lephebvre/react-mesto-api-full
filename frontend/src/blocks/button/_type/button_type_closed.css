@@ -1,0 +1,18 @@
+.button_type_closed {
+    margin-left: auto;
+    margin-right: -40px;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    position: relative;
+    background-image: url('../../../images/close.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+@media (max-width: 700px){
+    .button_type_closed{
+        margin-bottom: 13.62px;
+    }
+}

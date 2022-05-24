@@ -1,0 +1,17 @@
+.opacity_icon {
+    opacity: 0;
+    transition-duration: 0.8s;
+    transition-timing-function: ease;
+    text-decoration: none;
+    color: white;
+  }
+   
+.opacity_icon:hover {
+    opacity: 1;
+    cursor: pointer;
+
+  }
+
+  .opacity_icon:visited {
+    color: white;
+   }

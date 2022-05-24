@@ -1,0 +1,5 @@
+.button {
+    display: flex;
+    background-color: black;
+    cursor: pointer;
+}

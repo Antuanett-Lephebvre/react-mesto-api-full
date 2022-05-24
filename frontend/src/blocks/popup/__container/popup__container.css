@@ -1,0 +1,15 @@
+.popup__container {
+    position: fixed;
+    z-index: 1;
+    left:50%;
+    top:50%;
+    margin: auto;
+    transform: translate(-50%, -50%);
+}
+
+/*@media (max-width: 700px){
+    .popup__container{
+        margin-left: -141px;
+        margin-top: -176px;
+    }
+}*/

@@ -1,0 +1,8 @@
+.header__info {
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    column-gap: 24px;
+}
