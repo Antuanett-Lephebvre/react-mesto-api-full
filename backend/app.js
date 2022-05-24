@@ -1,8 +1,8 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const helmet = require("helmet");
-const cors = require("cors");
+const helmet = require('helmet');
+const cors = require('cors');
 
 const { errors } = require('celebrate');
 const userRouter = require('./routes/users');
@@ -25,31 +25,31 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 
 const options = {
   origin: [
-    "http://api.ekatant.nomoredomains.work",
-    "https://api.ekatant.nomoredomains.work",
-    "http://kate.mesto.nomoredomains.work",
-    "https://kate.mesto.nomoredomains.work",
-    "http://localhost:3000",
-    "https://localhost:3000",
-    "http://localhost:3001",
-    "https://localhost:3001",
+    'http://api.ekatant.nomoredomains.work',
+    'https://api.ekatant.nomoredomains.work',
+    'http://kate.mesto.nomoredomains.work',
+    'https://kate.mesto.nomoredomains.work',
+    'http://localhost:3000',
+    'https://localhost:3000',
+    'http://localhost:3001',
+    'https://localhost:3001',
   ],
-  methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
   optionsSuccessStatus: 204,
-  allowedHeaders: ["Content-Type", "origin", "Authorization", "Accept"],
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization', 'Accept'],
   credentials: true,
 };
 
-app.use("*", cors(options));
+app.use('*', cors(options));
 app.use(helmet());
 
 app.use(express.json());
 app.use(requestLogger);
 
-app.get("/crash-test", () => {
+app.get('/crash-test', () => {
   setTimeout(() => {
-    throw new Error("Сервер сейчас упадёт");
+    throw new Error('Сервер сейчас упадёт'),
   }, 0);
 });
 
